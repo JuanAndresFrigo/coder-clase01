@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Materia: {{ nombreMateria }}</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Apellido</th>
+        <th scope="col">Nombre</th>
+        <th scope="col" *ngFor="let item of evaluaciones">{{ item.nombre }}</th>
+        <th scope="col">Condición final</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let student of alumnos" >
+        <td>{{ student.apellido }}</td>
+        <td>{{ student.nombre }}</td>
+        <td *ngFor="let item of student.evaluaciones">
+          {{ item.nota }}
+        </td>
+        <td [ngClass]="getClassCondition(student.condicion)">{{ student.condicion }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
